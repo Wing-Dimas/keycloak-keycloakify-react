@@ -33,7 +33,6 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
     }, [isFormSubmittable]);
 
     const groupNameRef = { current: "" };
-    // console.log(formFieldStates);
 
     return (
         <>
@@ -63,7 +62,17 @@ export default function UserProfileFormFields(props: UserProfileFormFieldsProps<
                                         htmlFor={attribute.name === "firstName" ? "fullname" : attribute.name}
                                         className={clsx(kcClsx("kcLabelClass"), "text-sm font-medium text-gray-900 dark:text-white")}
                                     >
-                                        {attribute.name === "firstName" ? advancedMsg("Full Name") : advancedMsg(attribute.displayName ?? "")}
+                                        {(() => {
+                                            const text = advancedMsg(attribute.displayName ?? "");
+                                            switch (attribute.name) {
+                                                case "username":
+                                                    return advancedMsg("NIK");
+                                                case "firstName":
+                                                    return advancedMsg("Full Name");
+                                                default:
+                                                    return text;
+                                            }
+                                        })()}
                                     </label>
                                     {attribute.required && <span className="text-red-600"> *</span>}
                                 </div>
@@ -313,13 +322,14 @@ function InputFieldByType(props: InputFieldByTypeProps) {
                             onChange={event => {
                                 setFullname(event.target.value);
                             }}
-                            onBlur={() =>
-                                props.dispatchFormAction({
+                            onBlur={() => {
+                                console.log("test");
+                                return props.dispatchFormAction({
                                     action: "focus lost",
-                                    name: "firstName",
+                                    name: attribute.name,
                                     fieldIndex: undefined
-                                })
-                            }
+                                });
+                            }}
                         />
                     </>
                 );
@@ -348,15 +358,6 @@ function PasswordWrapper(props: { kcClsx: KcClsx; i18n: I18n; passwordInputId: s
     return (
         <div className={clsx(kcClsx("kcInputGroup"), "relative")}>
             {children}
-            {/* <button
-                type="button"
-                className={kcClsx("kcFormPasswordVisibilityButtonClass")}
-                aria-label={msgStr(isPasswordRevealed ? "hidePassword" : "showPassword")}
-                aria-controls={passwordInputId}
-                onClick={toggleIsPasswordRevealed}
-            >
-                <i className={kcClsx(isPasswordRevealed ? "kcFormPasswordVisibilityIconHide" : "kcFormPasswordVisibilityIconShow")} aria-hidden />
-            </button> */}
             <button
                 type="button"
                 onClick={toggleIsPasswordRevealed}
@@ -403,6 +404,10 @@ function InputTag(
     const { attribute, fieldIndex, kcClsx, dispatchFormAction, valueOrValues, i18n, displayableErrors, onChange, onBlur } = props;
 
     const { advancedMsgStr } = i18n;
+
+    // if(attribute.name === "username"){
+    //     const [first, setFirst] = useState("")
+    // }
 
     return (
         <>

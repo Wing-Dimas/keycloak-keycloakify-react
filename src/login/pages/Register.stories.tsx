@@ -14,7 +14,33 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => <KcPageStory />
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                profile: {
+                    attributesByName: {
+                        username: {
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
+                    }
+                }
+            }}
+        />
+    )
 };
 
 export const WithEmailAlreadyExists: Story = {
@@ -24,7 +50,17 @@ export const WithEmailAlreadyExists: Story = {
                 profile: {
                     attributesByName: {
                         username: {
-                            value: "johndoe"
+                            value: "12345677891237",
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
                         },
                         email: {
                             value: "jhon.doe@gmail.com"
@@ -35,6 +71,11 @@ export const WithEmailAlreadyExists: Story = {
                         lastName: {
                             value: "Doe"
                         }
+                    }
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
                     }
                 },
                 messagesPerField: {
@@ -54,6 +95,18 @@ export const WithRestrictedToMITStudents: Story = {
             kcContext={{
                 profile: {
                     attributesByName: {
+                        username: {
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        },
                         email: {
                             validators: {
                                 pattern: {
@@ -71,7 +124,8 @@ export const WithRestrictedToMITStudents: Story = {
                     messages: {
                         "profile.attributes.email.inputHelperTextBefore": "Please use your MIT or Berkeley email.",
                         "profile.attributes.email.pattern.error":
-                            "This is not an MIT (<strong>@mit.edu</strong>) nor a Berkeley (<strong>@berkeley.edu</strong>) email."
+                            "This is not an MIT (<strong>@mit.edu</strong>) nor a Berkeley (<strong>@berkeley.edu</strong>) email.",
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
                     }
                 }
             }}
@@ -85,6 +139,18 @@ export const WithFavoritePet: Story = {
             kcContext={{
                 profile: {
                     attributesByName: {
+                        username: {
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        },
                         favoritePet: {
                             name: "favorite-pet",
                             displayName: "${profile.attributes.favoritePet}",
@@ -106,7 +172,8 @@ export const WithFavoritePet: Story = {
                         "profile.attributes.favoritePet": "Favorite Pet",
                         "profile.attributes.favoritePet.options.cat": "Fluffy Cat",
                         "profile.attributes.favoritePet.options.dog": "Loyal Dog",
-                        "profile.attributes.favoritePet.options.fish": "Peaceful Fish"
+                        "profile.attributes.favoritePet.options.fish": "Peaceful Fish",
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
                     }
                 }
             }}
@@ -120,6 +187,18 @@ export const WithNewsletter: Story = {
             kcContext={{
                 profile: {
                     attributesByName: {
+                        username: {
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        },
                         newsletter: {
                             name: "newsletter",
                             displayName: "Sign up to the newsletter",
@@ -138,6 +217,11 @@ export const WithNewsletter: Story = {
                             readOnly: false
                         } satisfies Attribute
                     }
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
+                    }
                 }
             }}
         />
@@ -155,6 +239,11 @@ export const WithEmailAsUsername: Story = {
                     attributesByName: {
                         username: undefined
                     }
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
+                    }
                 }
             }}
         />
@@ -165,6 +254,27 @@ export const WithRecaptcha: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                profile: {
+                    attributesByName: {
+                        username: {
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
+                    }
+                },
                 scripts: ["https://www.google.com/recaptcha/api.js?hl=en"],
                 recaptchaRequired: true,
                 recaptchaSiteKey: "6LfQHvApAAAAAE73SYTd5vS0lB1Xr7zdiQ-6iBVa"
@@ -177,6 +287,27 @@ export const WithRecaptchaFrench: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                profile: {
+                    attributesByName: {
+                        username: {
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
+                    }
+                },
                 locale: {
                     currentLanguageTag: "fr"
                 },
@@ -192,8 +323,29 @@ export const WithPasswordMinLength8: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                profile: {
+                    attributesByName: {
+                        username: {
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        }
+                    }
+                },
                 passwordPolicies: {
                     length: 8
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
+                    }
                 }
             }}
         />
@@ -204,10 +356,27 @@ export const WithTermsAcceptance: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                profile: {
+                    attributesByName: {
+                        username: {
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        }
+                    }
+                },
                 termsAcceptanceRequired: true,
                 "x-keycloakify": {
                     messages: {
-                        termsText: "<a href='https://example.com/terms'>Service Terms of Use</a>"
+                        termsText: "<a href='https://example.com/terms'>Service Terms of Use</a>",
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
                     }
                 }
             }}
@@ -219,6 +388,27 @@ export const WithTermsNotAccepted: Story = {
         <KcPageStory
             {...args}
             kcContext={{
+                profile: {
+                    attributesByName: {
+                        username: {
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
+                    }
+                },
                 termsAcceptanceRequired: true,
                 messagesPerField: {
                     existsError: (fieldName: string) => fieldName === "termsAccepted",
@@ -234,15 +424,32 @@ export const WithFieldErrors: Story = {
             kcContext={{
                 profile: {
                     attributesByName: {
-                        username: { value: "" },
+                        username: {
+                            value: "",
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        },
                         email: { value: "invalid-email" }
                     }
                 },
                 messagesPerField: {
                     existsError: (fieldName: string) => ["username", "email"].includes(fieldName),
                     get: (fieldName: string) => {
-                        if (fieldName === "username") return "Username is required.";
+                        if (fieldName === "username") return "Invalid NIK format";
                         if (fieldName === "email") return "Invalid email format.";
+                    }
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
                     }
                 }
             }}
@@ -255,7 +462,7 @@ export const WithReadOnlyFields: Story = {
             kcContext={{
                 profile: {
                     attributesByName: {
-                        username: { value: "johndoe", readOnly: true },
+                        username: { value: "128312323080909", readOnly: true },
                         email: { value: "jhon.doe@gmail.com", readOnly: false }
                     }
                 }
@@ -269,7 +476,24 @@ export const WithAutoGeneratedUsername: Story = {
             kcContext={{
                 profile: {
                     attributesByName: {
-                        username: { value: "autogenerated_username" }
+                        username: {
+                            value: "autogenerated_username",
+                            validators: {
+                                pattern: {
+                                    pattern: "^\\d{2}\\d{2}\\d{2}(0[1-9]|[12]\\d|3[01])(0[1-9]|1[0-2])\\d{2}\\d{4}$",
+                                    "error-message": "${profile.attributes.username.pattern.error}"
+                                },
+                                length: {
+                                    min: 16,
+                                    max: 16
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-keycloakify": {
+                    messages: {
+                        "profile.attributes.username.pattern.error": "Invalid NIK format"
                     }
                 }
             }}

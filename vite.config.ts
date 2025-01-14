@@ -7,6 +7,10 @@ export default defineConfig({
     plugins: [
         react(),
         keycloakify({
+            keycloakVersionTargets: {
+                "all-other-versions": true,
+                "22-to-25": false
+            },
             accountThemeImplementation: "none"
         })
     ]
