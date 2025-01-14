@@ -21,7 +21,7 @@ export const WithInvalidCredential: Story = {
         <KcPageStory
             kcContext={{
                 login: {
-                    username: "johndoe"
+                    username: "123"
                 },
                 messagesPerField: {
                     // NOTE: The other functions of messagesPerField are derived from get() and
@@ -32,7 +32,7 @@ export const WithInvalidCredential: Story = {
                     },
                     get: (fieldName: string) => {
                         if (fieldName === "username" || fieldName === "password") {
-                            return "Invalid username or password.";
+                            return "Invalid NIK or password.";
                         }
                         return "";
                     }

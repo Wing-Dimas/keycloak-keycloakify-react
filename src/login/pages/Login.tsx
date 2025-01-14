@@ -105,12 +105,15 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                         >
                             {!usernameHidden && (
                                 <div className={kcClsx("kcFormGroupClass")}>
-                                    <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    {/* <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         {!realm.loginWithEmailAllowed
                                             ? msg("username")
                                             : !realm.registrationEmailAsUsername
                                               ? msg("usernameOrEmail")
                                               : msg("email")}
+                                    </label> */}
+                                    <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        {!realm.loginWithEmailAllowed ? "NIK" : !realm.registrationEmailAsUsername ? "NIK or Email" : msg("email")}
                                     </label>
                                     <input
                                         tabIndex={2}
