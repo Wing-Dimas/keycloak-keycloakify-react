@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 body.auth-page-custom {
-    background-image: url("/keycloakify-dev-resources/login/img/pattren.png");
-    background-size: 700px;
+    background-image: url("./assets/img/keycloak-bg.webp");
+    background-size: cover;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     @apply relative bg-primary flex xl:overflow-hidden overflow-scroll xl:bg-white bg-blend-overlay xl:bg-blend-normal px-8 py-3 min-h-screen xl:backdrop-brightness-75;
 }
 
-.login-class {
+#root {
     @apply w-full;
 }
 
@@ -28,7 +29,7 @@ body.auth-page-custom::before {
         rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
         scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     border-radius: 100%;
-    @apply bg-slate-400;
+    @apply bg-primary-950;
 }
 
 body.auth-page-custom::after {
@@ -47,7 +48,7 @@ body.auth-page-custom::after {
         scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     border-radius: 100%;
     --tw-bg-opacity: 1;
-    @apply bg-primary-400;
+    @apply bg-primary;
 }
 
 @media (max-width: calc(1280px - 1px)) {

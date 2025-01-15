@@ -55,7 +55,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     }
 
     return (
-        <div className="login-class">
+        <div className="login-class w-full">
             <div className="container w-full mx-auto sm:px-10 relative z-10">
                 <div className="block xl:grid grid-cols-2 gap-4">
                     <div className="hidden xl:flex flex-col min-h-screen">
