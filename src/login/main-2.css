@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body.auth-page-custom {
+    background-image: url("./assets/img/keycloak-bg.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-attachment: fixed;
+    @apply bg-secondary-100 min-h-screen;
+    /* @apply bg-secondary-100 flex flex-col items-center justify-center min-h-screen sm:py-16; */
+}
+
+body.auth-page-custom #storybook-root,
+body.auth-page-custom #root {
+    @apply flex flex-col items-center justify-center min-h-screen sm:py-16 py-6;
+}
+
+#kc-form-login .kcFormGroupClass {
+    @apply mt-3;
+}
+
+#kc-form-login .kcFormGroupClass {
+    @apply mt-3;
+}
+#kc-form-login .kcFormGroupClass label {
+    @apply sr-only;
+}
+#kc-form-login .kcFormGroupClass input {
+    @apply block border border-solid border-secondary-200 mt-1 rounded-md w-full focus:border-secondary-300 focus:ring focus:ring-secondary-200 focus:ring-opacity-50 sm:text-sm;
+}
+
+#kc-form-login .kcFormGroupClass .password-wrapper button {
+    @apply dark:focus:text-secondary-500 focus:text-secondary-600;
+}
+
+#kc-form-login .kcFormGroupClass .error-message {
+    font-size: 13px;
+    @apply mt-1 text-red-600 font-medium;
+}
+
+#kc-form-buttons input {
+    @apply text-white bg-secondary-500 focus:ring-secondary-600 hover:bg-secondary-700 px-4 py-2 text-sm flex justify-center relative rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+#kc-form-options #rememberMe {
+    @apply focus:ring-4 border-secondary-950 text-secondary-500 focus:ring-secondary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-secondary-600 dark:ring-offset-gray-800;
+}
+
+.kcFormOptionsWrapperClass span a {
+    @apply text-secondary-600 dark:text-secondary-500;
+}
+
+#kc-registration-container #kc-registration p {
+    @apply text-sm font-light text-gray-800 dark:text-gray-800;
+}
+
+#kc-registration-container #kc-registration p a {
+    @apply text-secondary-600 dark:text-secondary-500;
+}
+
+/* SOSIAL MEDIA */
+.kcFormSocialAccountListClass {
+    @apply flex flex-col gap-2;
+}
+
+.kcFormSocialAccountListButtonClass {
+    @apply hover:text-secondary-400 w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800;
+}
+
+.kcFormSocialAccountListGridClass {
+    @apply grid grid-cols-2;
+}
+
+.kcFormSocialAccountGridItem {
+    @apply hover:text-secondary-400 w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800;
+}

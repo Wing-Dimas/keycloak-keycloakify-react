@@ -7,11 +7,12 @@ export default defineConfig({
     plugins: [
         react(),
         keycloakify({
+            accountThemeImplementation: "none",
             keycloakVersionTargets: {
                 "all-other-versions": true,
                 "22-to-25": false
             },
-            accountThemeImplementation: "none"
+            themeName: ["keycloakify-public", "keycloakify-government"]
         })
     ]
 });

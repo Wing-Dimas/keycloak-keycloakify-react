@@ -8,9 +8,7 @@ import { useInitialize } from "keycloakify/login/Template.useInitialize";
 import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 
-import logoMojokerto from "./assets/img/logo-mojokerto.png";
-import thumbnail from "./assets/img/thumbnail.png";
-
+import logoMojokerto from "./assets/img/logo-mojokerto-2.png";
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
         displayInfo = false,
@@ -32,10 +30,11 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     const { msg, msgStr } = i18n;
 
-    const { realm, auth, url, message, isAppInitiatedAction } = kcContext;
+    const { auth, url, message, isAppInitiatedAction } = kcContext;
 
     useEffect(() => {
-        document.title = documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName);
+        document.title =
+            documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName);
     }, []);
 
     useSetClassName({
@@ -55,128 +54,171 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
     }
 
     return (
-        <div className="login-class w-full">
-            <div className="container w-full mx-auto px-8 sm:px-10 relative z-10">
-                <div className="block xl:grid grid-cols-2 gap-4">
-                    <div className="hidden xl:flex flex-col min-h-screen">
-                        <div className=" flex items-center pt-5">
-                            <img src={logoMojokerto} alt="Logo Mojokerto" className="w-1/2" />
-                        </div>
-                        <div>
-                            <img src={thumbnail} alt="Image by vectorjuice on Freepik" className="w-3/4" />
-                        </div>
-                        <div className="my-auto">
-                            <div className="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                                {msg("loginTitleHtml", realm.displayNameHtml)}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="h-screen xl:h-auto flex self-center">
-                        <div className="overflow-scroll max-h-[95vh] my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 bg-transparent px-5 sm:px-8 py-8 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-full">
-                            <header className="relative font-bold text-2xl xl:text-3xl text-center xl:text-left">
-                                {(() => {
-                                    const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (
-                                        <h1 id="kc-page-title">{headerNode}</h1>
-                                    ) : (
-                                        <div id="kc-username" className="flex justify-center items-center gap-2">
-                                            <label id="kc-attempted-username" className="inline-block">
-                                                {auth.attemptedUsername}
-                                            </label>
-                                            <a
-                                                id="reset-login"
-                                                href={url.loginRestartFlowUrl}
-                                                aria-label={msgStr("restartLoginTooltip")}
-                                                className="inline-flex items-center"
-                                            >
-                                                <div className="kc-login-tooltip">
-                                                    <svg
-                                                        className="w-6 h-6 text-primary-800 dark:text-white"
-                                                        aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                        width="24"
-                                                        height="24"
-                                                        fill="none"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        <path
-                                                            stroke="currentColor"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth="2"
-                                                            d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"
-                                                        />
-                                                    </svg>
+        <div className="max-w-md space-y-6 w-full">
+            <div className="bg-opacity-[0.6] p-6 backdrop-blur-[8px] rounded-xl my-0 mx-4 bg-white space-y-6 border border-white">
+                <div className="text-center">
+                    <img
+                        src={logoMojokerto}
+                        alt="logo mojokerto"
+                        className="h-[70px] m-auto"
+                    />
+                </div>
+                <header className="space-y-4">
+                    {(() => {
+                        const node = !(
+                            auth !== undefined &&
+                            auth.showUsername &&
+                            !auth.showResetCredentials
+                        ) ? (
+                            <>
+                                <div className="font-medium text-center text-[1.2rem] leading-[1.4]">
+                                    Single Sign On Layanan Pemerintahan
+                                    <br />
+                                    Kabupaten Mojokerto
+                                </div>
+                                <h1
+                                    id="kc-page-title"
+                                    className="text-[13px] font-medium mt-[1rem]"
+                                >
+                                    {!!headerNode && "Login menggunakan akun anda"}
+                                </h1>
+                            </>
+                        ) : (
+                            <div
+                                id="kc-username"
+                                className="flex justify-center items-center gap-2"
+                            >
+                                <label
+                                    id="kc-attempted-username"
+                                    className="inline-block"
+                                >
+                                    {auth.attemptedUsername}
+                                </label>
+                                <a
+                                    id="reset-login"
+                                    href={url.loginRestartFlowUrl}
+                                    aria-label={msgStr("restartLoginTooltip")}
+                                    className="inline-flex items-center"
+                                >
+                                    <div className="kc-login-tooltip">
+                                        <svg
+                                            className="w-6 h-6 text-primary-800 dark:text-white"
+                                            aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="24"
+                                            height="24"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke="currentColor"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"
+                                            />
+                                        </svg>
 
-                                                    <span className="sr-only">{msg("restartLoginTooltip")}</span>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    );
-
-                                    if (displayRequiredFields) {
-                                        return (
-                                            <div className={clsx(kcClsx("kcContentWrapperClass"), "relative")}>
-                                                <div className={clsx(kcClsx("kcLabelWrapperClass"), "subtitle", "absolute -top-5 right-0")}>
-                                                    <span className="subtitle text-sm text-slate-400 font-normal">
-                                                        <span className="required text-red-500">*</span>
-                                                        {msg("requiredFields")}
-                                                    </span>
-                                                </div>
-                                                <div className="col-md-10">{node}</div>
-                                            </div>
-                                        );
-                                    }
-
-                                    return node;
-                                })()}
-                            </header>
-                            <div id="">
-                                {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
-                                {displayMessage && message !== undefined && (message.type !== "warning" || !isAppInitiatedAction) && (
-                                    <Alert type={message.type}>
-                                        <span
-                                            dangerouslySetInnerHTML={{
-                                                __html: kcSanitize(message.summary)
-                                            }}
-                                        />
-                                    </Alert>
-                                )}
-                                {children}
-                                {auth !== undefined && auth.showTryAnotherWayLink && (
-                                    <form id="kc-select-try-another-way-form" action={url.loginAction} method="post">
-                                        <div className={kcClsx("kcFormGroupClass")}>
-                                            <input type="hidden" name="tryAnotherWay" value="on" />
-                                            <a
-                                                href="#"
-                                                id="try-another-way"
-                                                onClick={() => {
-                                                    document.forms["kc-select-try-another-way-form" as never].submit();
-                                                    return false;
-                                                }}
-                                            >
-                                                {msg("doTryAnotherWay")}
-                                            </a>
-                                        </div>
-                                    </form>
-                                )}
-                                {displayInfo && (
-                                    <div id="kc-info" className={kcClsx("kcSignUpClass")}>
-                                        <div id="kc-info-wrapper" className={clsx(kcClsx("kcInfoAreaWrapperClass"), "text-sm text-center")}>
-                                            {infoNode}
-                                        </div>
+                                        <span className="sr-only">
+                                            {msg("restartLoginTooltip")}
+                                        </span>
                                     </div>
+                                </a>
+                            </div>
+                        );
+
+                        if (displayRequiredFields) {
+                            return (
+                                <div
+                                    className={clsx(
+                                        kcClsx("kcContentWrapperClass"),
+                                        "relative"
+                                    )}
+                                >
+                                    <div
+                                        className={clsx(
+                                            kcClsx("kcLabelWrapperClass"),
+                                            "subtitle",
+                                            "absolute -top-5 right-0"
+                                        )}
+                                    >
+                                        <span className="subtitle text-sm text-slate-400 font-normal">
+                                            <span className="required text-red-500">
+                                                *
+                                            </span>
+                                            {msg("requiredFields")}
+                                        </span>
+                                    </div>
+                                    <div className="col-md-10">{node}</div>
+                                </div>
+                            );
+                        }
+
+                        return node;
+                    })()}
+                </header>
+                <div id="" className="space-y-4">
+                    {/* App-initiated actions should not see warning messages about the need to complete the action during login. */}
+                    {displayMessage &&
+                        message !== undefined &&
+                        (message.type !== "warning" || !isAppInitiatedAction) && (
+                            <Alert type={message.type}>
+                                <span
+                                    dangerouslySetInnerHTML={{
+                                        __html: kcSanitize(message.summary)
+                                    }}
+                                />
+                            </Alert>
+                        )}
+                    {children}
+                    {auth !== undefined && auth.showTryAnotherWayLink && (
+                        <form
+                            id="kc-select-try-another-way-form"
+                            action={url.loginAction}
+                            method="post"
+                            className="m-0 space-y-4"
+                        >
+                            <div className={kcClsx("kcFormGroupClass")}>
+                                <input type="hidden" name="tryAnotherWay" value="on" />
+                                <a
+                                    href="#"
+                                    id="try-another-way"
+                                    onClick={() => {
+                                        document.forms[
+                                            "kc-select-try-another-way-form" as never
+                                        ].submit();
+                                        return false;
+                                    }}
+                                >
+                                    {msg("doTryAnotherWay")}
+                                </a>
+                            </div>
+                        </form>
+                    )}
+                    {displayInfo && (
+                        <div id="kc-info" className={kcClsx("kcSignUpClass")}>
+                            <div
+                                id="kc-info-wrapper"
+                                className={clsx(
+                                    kcClsx("kcInfoAreaWrapperClass"),
+                                    "text-sm text-center"
                                 )}
-                                {socialProvidersNode}
+                            >
+                                {infoNode}
                             </div>
                         </div>
-                    </div>
+                    )}
+                    {socialProvidersNode}
                 </div>
             </div>
         </div>
     );
 }
 
-function Alert(props: { type: "success" | "warning" | "error" | "info"; children: JSX.Element }) {
+function Alert(props: {
+    type: "success" | "warning" | "error" | "info";
+    children: JSX.Element;
+}) {
     let color;
     switch (props.type) {
         case "success":
@@ -196,7 +238,10 @@ function Alert(props: { type: "success" | "warning" | "error" | "info"; children
     }
 
     return (
-        <div className={`flex items-center p-4 mb-4 text-sm rounded-lg mt-4 ${color}`} role="alert">
+        <div
+            className={`flex items-center p-4 mb-4 text-sm rounded-lg mt-4 ${color}`}
+            role="alert"
+        >
             <svg
                 className="flex-shrink-0 inline w-4 h-4 me-3"
                 aria-hidden="true"

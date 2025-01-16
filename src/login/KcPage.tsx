@@ -1,5 +1,4 @@
-import "./index.css";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useMemo } from "react";
 import type { ClassKey } from "keycloakify/login";
 import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
@@ -15,6 +14,7 @@ const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
 
 const Template = lazy(() => import("./Template"));
+const Template2 = lazy(() => import("./Template2"));
 const UserProfileFormFields = lazy(() => import("./UserProfileFormFields"));
 
 const doMakeUserConfirmPassword = true;
@@ -24,6 +24,8 @@ export default function KcPage(props: { kcContext: KcContext }) {
 
     const { i18n } = useI18n({ kcContext });
 
+    useCustomCss(kcContext);
+
     return (
         <Suspense>
             {(() => {
@@ -32,7 +34,11 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         return (
                             <Login
                                 {...{ kcContext, i18n, classes }}
-                                Template={Template}
+                                Template={
+                                    kcContext.themeName === "keycloakify-government"
+                                        ? Template2
+                                        : Template
+                                }
                                 doUseDefaultCss={false}
                             />
                         );
@@ -77,3 +83,18 @@ export default function KcPage(props: { kcContext: KcContext }) {
 }
 
 const classes = {} satisfies { [key in ClassKey]?: string };
+
+function useCustomCss(kcContext: KcContext) {
+    useMemo(() => {
+        switch (kcContext.themeName) {
+            case "keycloakify-public":
+                import("./main-1.css");
+                break;
+            case "keycloakify-government":
+                import("./main-2.css");
+                break;
+            default:
+                break;
+        }
+    }, [kcContext.themeName]);
+}

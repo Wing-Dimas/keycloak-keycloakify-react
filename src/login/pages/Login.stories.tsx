@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { createKcPageStory } from "../KcPageStory";
+import type { KcContext } from "../KcContext";
 
 const { KcPageStory } = createKcPageStory({ pageId: "login.ftl" });
 
@@ -8,18 +9,23 @@ const meta = {
     component: KcPageStory
 } satisfies Meta<typeof KcPageStory>;
 
+type ThemeNameType = KcContext["themeName"];
+
+const myTheme: ThemeNameType = "keycloakify-public";
+
 export default meta;
 
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-    render: () => <KcPageStory />
+    render: () => <KcPageStory kcContext={{ themeName: myTheme }} />
 };
 
 export const WithInvalidCredential: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 login: {
                     username: "123"
                 },
@@ -46,6 +52,7 @@ export const WithoutRegistration: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 realm: { registrationAllowed: false }
             }}
         />
@@ -56,6 +63,7 @@ export const WithoutRememberMe: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 realm: { rememberMe: false }
             }}
         />
@@ -66,6 +74,7 @@ export const WithoutPasswordReset: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 realm: { resetPasswordAllowed: false }
             }}
         />
@@ -76,6 +85,7 @@ export const WithEmailAsUsername: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 realm: { loginWithEmailAllowed: false }
             }}
         />
@@ -86,6 +96,7 @@ export const WithPresetUsername: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 login: { username: "max.mustermann@mail.com" }
             }}
         />
@@ -96,6 +107,7 @@ export const WithImmutablePresetUsername: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 auth: {
                     attemptedUsername: "max.mustermann@mail.com",
                     showUsername: true
@@ -114,6 +126,7 @@ export const WithSocialProviders: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 social: {
                     displayInfo: true,
                     providers: [
@@ -212,6 +225,7 @@ export const WithoutPasswordField: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 realm: { password: false }
             }}
         />
@@ -222,6 +236,7 @@ export const WithErrorMessage: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
+                themeName: myTheme,
                 message: {
                     summary: "The time allotted for the connection has elapsed.<br/>The login process will restart from the beginning.",
                     type: "error"
@@ -236,6 +251,7 @@ export const WithOneSocialProvider: Story = {
         <KcPageStory
             {...args}
             kcContext={{
+                themeName: myTheme,
                 social: {
                     displayInfo: true,
                     providers: [
@@ -258,6 +274,7 @@ export const WithTwoSocialProviders: Story = {
         <KcPageStory
             {...args}
             kcContext={{
+                themeName: myTheme,
                 social: {
                     displayInfo: true,
                     providers: [
@@ -286,6 +303,7 @@ export const WithNoSocialProviders: Story = {
         <KcPageStory
             {...args}
             kcContext={{
+                themeName: myTheme,
                 social: {
                     displayInfo: true,
                     providers: []
@@ -299,6 +317,7 @@ export const WithMoreThanTwoSocialProviders: Story = {
         <KcPageStory
             {...args}
             kcContext={{
+                themeName: myTheme,
                 social: {
                     displayInfo: true,
                     providers: [
@@ -341,6 +360,7 @@ export const WithSocialProvidersAndWithoutRememberMe: Story = {
         <KcPageStory
             {...args}
             kcContext={{
+                themeName: myTheme,
                 social: {
                     displayInfo: true,
                     providers: [
