@@ -52,7 +52,9 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                     UserProfileFormFields,
                                     doMakeUserConfirmPassword
                                 }}
-                                Template={Template}
+                                Template={kcContext.themeName === "keycloakify-government"
+                                    ? Template2
+                                    : Template}
                                 doUseDefaultCss={false}
                             />
                         );
@@ -60,7 +62,11 @@ export default function KcPage(props: { kcContext: KcContext }) {
                         return (
                             <LoginResetPassword
                                 {...{ kcContext, i18n, classes }}
-                                Template={Template}
+                                Template={
+                                    kcContext.themeName === "keycloakify-government"
+                                        ? Template2
+                                        : Template
+                                }
                                 doUseDefaultCss={false}
                             />
                         );
