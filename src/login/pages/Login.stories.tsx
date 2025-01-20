@@ -11,7 +11,7 @@ const meta = {
 
 type ThemeNameType = KcContext["themeName"];
 
-const myTheme: ThemeNameType = "keycloakify-public";
+const myTheme: ThemeNameType = "keycloakify-government";
 
 export default meta;
 
