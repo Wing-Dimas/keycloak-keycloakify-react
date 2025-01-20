@@ -39,7 +39,13 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
                                   : msg("email")}
                         </label> */}
                         <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                            {!realm.loginWithEmailAllowed ? "NIK" : !realm.registrationEmailAsUsername ? "NIK or Email" : msg("email")}
+                            {kcContext.themeName === 'keycloakify-government'?
+                                !realm.loginWithEmailAllowed?
+                                    "NIP atau Username":!realm.registrationEmailAsUsername?
+                                        "NIP atau Username atau Email":msg("email"):
+                                        !realm.loginWithEmailAllowed ? "NIK" : !realm.registrationEmailAsUsername ? "NIK or Email" : msg("email")
+                            }
+                            {/* {!realm.loginWithEmailAllowed ? "NIK" : !realm.registrationEmailAsUsername ? "NIK or Email" : msg("email")} */}
                         </label>
                     </div>
                     <div className={kcClsx("kcInputWrapperClass")}>

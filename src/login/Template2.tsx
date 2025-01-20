@@ -14,7 +14,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
         displayInfo = false,
         displayMessage = true,
         displayRequiredFields = false,
-        headerNode,
+        // headerNode,
         socialProvidersNode = null,
         infoNode = null,
         documentTitle,
@@ -30,7 +30,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     const { msg, msgStr } = i18n;
 
-    const { auth, url, message, isAppInitiatedAction } = kcContext;
+    const { auth, url, message, isAppInitiatedAction, realm } = kcContext;
 
     useEffect(() => {
         document.title =
@@ -72,16 +72,9 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         ) ? (
                             <>
                                 <div className="font-medium text-center text-[1.2rem] leading-[1.4]">
-                                    Single Sign On Layanan Pemerintahan
-                                    <br />
-                                    Kabupaten Mojokerto
+                                    {realm.displayNameHtml}
                                 </div>
-                                <h1
-                                    id="kc-page-title"
-                                    className="text-[13px] font-medium mt-[1rem]"
-                                >
-                                    {!!headerNode && "Login menggunakan akun anda"}
-                                </h1>
+                                
                             </>
                         ) : (
                             <div
