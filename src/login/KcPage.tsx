@@ -4,6 +4,7 @@ import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
 import LoginResetPassword from "./pages/LoginResetPassword";
+import LoginVerifyEmail from "./pages/LoginVerifyEmail";
 
 const DefaultTemplate = lazy(() => import("keycloakify/login/Template"));
 const DefaultUserProfileFormFields = lazy(
@@ -64,6 +65,15 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                 doUseDefaultCss={false}
                             />
                         );
+                    case "login-verify-email.ftl":
+                        return (
+                            <LoginVerifyEmail
+                                {...{ kcContext, i18n, classes }}
+                                Template={Template}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                        break;
                     default:
                         return (
                             <DefaultPage

@@ -1,3 +1,19 @@
+/*
+=====================================================================
+    File: main-1.css
+    Description:
+    This file is used to customize the theme named "keycloakify-public".
+    Before making any edits, please consider the following:
+
+    1. This file is associated with Keycloak theme configurations.
+    2. Ensure you understand the structure and the impact of changes on the UI.
+    3. Backup the file before making any modifications to avoid losing the original setup.
+    4. Maintain consistent coding standards to ensure readability for other developers.
+
+    Note: Contact the development team if you have questions regarding this file.
+=====================================================================
+*/
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -92,6 +108,14 @@ body.auth-page-custom::after {
 
 .kcFormOptionsWrapperClass span a {
     @apply text-primary-600 dark:text-primary-500;
+}
+
+.kcSignUpClass .instruction {
+    @apply bg-gray-100 mt-2 py-2;
+}
+
+.kcSignUpClass .instruction a {
+    @apply text-primary-600 hover:text-primary-500;
 }
 
 /* SOSIAL MEDIA */

@@ -1599,6 +1599,63 @@
                     }
                 }
             ]
+        },
+        {
+            "id": "f4b062c4-713f-4c00-9f0e-075ccd3aeb81",
+            "name": "service_account",
+            "description": "Specific scope for a client enabled for service accounts",
+            "protocol": "openid-connect",
+            "attributes": {
+                "include.in.token.scope": "false",
+                "display.on.consent.screen": "false"
+            },
+            "protocolMappers": [
+                {
+                    "id": "92fa54a5-c01d-4a9e-91ab-f99b6733e5de",
+                    "name": "Client ID",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-usersessionmodel-note-mapper",
+                    "consentRequired": false,
+                    "config": {
+                        "introspection.token.claim": "true",
+                        "access.token.claim": "true",
+                        "claim.name": "client_id",
+                        "id.token.claim": "true",
+                        "jsonType.label": "String",
+                        "user.session.note": "client_id"
+                    }
+                },
+                {
+                    "id": "d247776d-ce1b-4d74-a56e-677301d5615d",
+                    "name": "Client Host",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-usersessionmodel-note-mapper",
+                    "consentRequired": false,
+                    "config": {
+                        "introspection.token.claim": "true",
+                        "access.token.claim": "true",
+                        "claim.name": "clientHost",
+                        "id.token.claim": "true",
+                        "jsonType.label": "String",
+                        "user.session.note": "clientHost"
+                    }
+                },
+                {
+                    "id": "918b55fc-8cee-4397-8b4f-8f5ec3801dcb",
+                    "name": "Client IP Address",
+                    "protocol": "openid-connect",
+                    "protocolMapper": "oidc-usersessionmodel-note-mapper",
+                    "consentRequired": false,
+                    "config": {
+                        "introspection.token.claim": "true",
+                        "access.token.claim": "true",
+                        "claim.name": "clientAddress",
+                        "id.token.claim": "true",
+                        "jsonType.label": "String",
+                        "user.session.note": "clientAddress"
+                    }
+                }
+            ]
         }
     ],
     "defaultDefaultClientScopes": [
@@ -1659,12 +1716,12 @@
                 "config": {
                     "allowed-protocol-mapper-types": [
                         "oidc-address-mapper",
-                        "saml-user-property-mapper",
                         "oidc-sha256-pairwise-sub-mapper",
-                        "oidc-usermodel-property-mapper",
-                        "saml-user-attribute-mapper",
                         "oidc-full-name-mapper",
                         "oidc-usermodel-attribute-mapper",
+                        "saml-user-attribute-mapper",
+                        "oidc-usermodel-property-mapper",
+                        "saml-user-property-mapper",
                         "saml-role-list-mapper"
                     ]
                 }
@@ -1695,13 +1752,13 @@
                 "subComponents": {},
                 "config": {
                     "allowed-protocol-mapper-types": [
-                        "oidc-sha256-pairwise-sub-mapper",
                         "saml-user-attribute-mapper",
-                        "saml-role-list-mapper",
-                        "oidc-usermodel-attribute-mapper",
                         "saml-user-property-mapper",
                         "oidc-full-name-mapper",
+                        "oidc-sha256-pairwise-sub-mapper",
+                        "saml-role-list-mapper",
                         "oidc-address-mapper",
+                        "oidc-usermodel-attribute-mapper",
                         "oidc-usermodel-property-mapper"
                     ]
                 }
@@ -2467,9 +2524,10 @@
         "cibaExpiresIn": "120",
         "oauth2DeviceCodeLifespan": "600",
         "parRequestUriLifespan": "60",
-        "clientSessionMaxLifespan": "0"
+        "clientSessionMaxLifespan": "0",
+        "darkMode": "true"
     },
-    "keycloakVersion": "26.0.8",
+    "keycloakVersion": "26.1.0",
     "userManagedAccessAllowed": false,
     "organizationsEnabled": false,
     "clientProfiles": {
@@ -2477,5 +2535,7 @@
     },
     "clientPolicies": {
         "policies": []
-    }
+    },
+    "adminPermissionsEnabled": false,
+    "verifiableCredentialsEnabled": false
 }
