@@ -56,7 +56,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
 
     return (
         <div className="login-class w-full">
-            <div className="container w-full mx-auto px-8 sm:px-10 relative z-10">
+            <div className="container w-full mx-auto sm:px-10 relative z-10">
                 <div className="block xl:grid grid-cols-2 gap-4">
                     <div className="hidden xl:flex flex-col min-h-screen">
                         <div className=" flex items-center pt-5">
@@ -72,7 +72,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                         </div>
                     </div>
                     <div className="h-screen xl:h-auto flex self-center">
-                        <div className="overflow-scroll max-h-[95vh] my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 bg-transparent px-5 sm:px-8 py-8 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-full">
+                        <div className="overflow-y-auto max-h-[95vh] my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 bg-transparent px-5 sm:px-8 py-8 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-full">
                             <header className="relative font-bold text-2xl xl:text-3xl text-center xl:text-left">
                                 {(() => {
                                     const node = !(auth !== undefined && auth.showUsername && !auth.showResetCredentials) ? (

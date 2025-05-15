@@ -53,9 +53,11 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                     UserProfileFormFields,
                                     doMakeUserConfirmPassword
                                 }}
-                                Template={kcContext.themeName === "keycloakify-government"
-                                    ? Template2
-                                    : Template}
+                                Template={
+                                    kcContext.themeName === "keycloakify-government"
+                                        ? Template2
+                                        : Template
+                                }
                                 doUseDefaultCss={false}
                             />
                         );
@@ -79,7 +81,6 @@ export default function KcPage(props: { kcContext: KcContext }) {
                                 doUseDefaultCss={false}
                             />
                         );
-                        break;
                     default:
                         return (
                             <DefaultPage

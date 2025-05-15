@@ -27,13 +27,13 @@
     "oauth2DevicePollingInterval": 5,
     "enabled": true,
     "sslRequired": "external",
-    "registrationAllowed": true,
+    "registrationAllowed": false,
     "registrationEmailAsUsername": false,
-    "rememberMe": true,
+    "rememberMe": false,
     "verifyEmail": false,
     "loginWithEmailAllowed": true,
     "duplicateEmailsAllowed": false,
-    "resetPasswordAllowed": true,
+    "resetPasswordAllowed": false,
     "editUsernameAllowed": false,
     "bruteForceProtected": false,
     "permanentLockout": false,
@@ -1622,7 +1622,8 @@
                         "claim.name": "client_id",
                         "id.token.claim": "true",
                         "jsonType.label": "String",
-                        "user.session.note": "client_id"
+                        "user.session.note": "client_id",
+                        "userinfo.token.claim": "true"
                     }
                 },
                 {
@@ -1637,7 +1638,8 @@
                         "claim.name": "clientHost",
                         "id.token.claim": "true",
                         "jsonType.label": "String",
-                        "user.session.note": "clientHost"
+                        "user.session.note": "clientHost",
+                        "userinfo.token.claim": "true"
                     }
                 },
                 {
@@ -1652,7 +1654,8 @@
                         "claim.name": "clientAddress",
                         "id.token.claim": "true",
                         "jsonType.label": "String",
-                        "user.session.note": "clientAddress"
+                        "user.session.note": "clientAddress",
+                        "userinfo.token.claim": "true"
                     }
                 }
             ]
@@ -1715,14 +1718,14 @@
                 "subComponents": {},
                 "config": {
                     "allowed-protocol-mapper-types": [
-                        "oidc-address-mapper",
-                        "oidc-sha256-pairwise-sub-mapper",
                         "oidc-full-name-mapper",
-                        "oidc-usermodel-attribute-mapper",
-                        "saml-user-attribute-mapper",
-                        "oidc-usermodel-property-mapper",
                         "saml-user-property-mapper",
-                        "saml-role-list-mapper"
+                        "saml-role-list-mapper",
+                        "oidc-sha256-pairwise-sub-mapper",
+                        "oidc-usermodel-attribute-mapper",
+                        "oidc-address-mapper",
+                        "saml-user-attribute-mapper",
+                        "oidc-usermodel-property-mapper"
                     ]
                 }
             },
@@ -1752,14 +1755,14 @@
                 "subComponents": {},
                 "config": {
                     "allowed-protocol-mapper-types": [
+                        "oidc-address-mapper",
+                        "saml-role-list-mapper",
+                        "oidc-usermodel-property-mapper",
                         "saml-user-attribute-mapper",
+                        "oidc-usermodel-attribute-mapper",
                         "saml-user-property-mapper",
                         "oidc-full-name-mapper",
-                        "oidc-sha256-pairwise-sub-mapper",
-                        "saml-role-list-mapper",
-                        "oidc-address-mapper",
-                        "oidc-usermodel-attribute-mapper",
-                        "oidc-usermodel-property-mapper"
+                        "oidc-sha256-pairwise-sub-mapper"
                     ]
                 }
             },
@@ -2525,7 +2528,7 @@
         "oauth2DeviceCodeLifespan": "600",
         "parRequestUriLifespan": "60",
         "clientSessionMaxLifespan": "0",
-        "darkMode": "true"
+        "darkMode": "false"
     },
     "keycloakVersion": "26.1.0",
     "userManagedAccessAllowed": false,

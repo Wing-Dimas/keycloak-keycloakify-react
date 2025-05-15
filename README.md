@@ -32,3 +32,13 @@ npm run build-keycloak-theme
 
 Note that by default Keycloakify generates multiple .jar files for different versions of Keycloak.
 You can customize this behavior, see documentation [here](https://docs.keycloakify.dev/targeting-specific-keycloak-versions).
+
+# Testing Keyloack Theme
+
+Run Dokcer first
+
+Once the prerequisites are set up, you're ready to start Keycloak. Run the following command in your Keycloakify project:
+
+```bash
+npx keycloakify start-keycloak
+```
