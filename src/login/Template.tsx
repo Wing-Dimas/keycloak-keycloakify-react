@@ -9,7 +9,8 @@ import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 
 import logoMojokerto from "./assets/img/logo-mojokerto.png";
-import thumbnail from "./assets/img/thumbnail.png";
+// import thumbnail from "./assets/img/thumbnail.png";
+import logoBupati from "./assets/img/bupati.webp";
 
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
@@ -63,7 +64,7 @@ export default function Template(props: TemplateProps<KcContext, I18n>) {
                             <img src={logoMojokerto} alt="Logo Mojokerto" className="w-1/2" />
                         </div>
                         <div>
-                            <img src={thumbnail} alt="Image by vectorjuice on Freepik" className="w-3/4" />
+                            <img src={logoBupati} alt="Image by vectorjuice on Freepik" className="w-3/4 mt-8" />
                         </div>
                         <div className="my-auto">
                             <div className="-intro-x text-white font-medium text-4xl leading-tight mt-10">

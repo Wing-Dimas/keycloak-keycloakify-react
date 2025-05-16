@@ -111,11 +111,11 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                                             : msg("email")}
                                 </label> */}
                             <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                {!realm.loginWithEmailAllowed ? "NIK" : !realm.registrationEmailAsUsername ? "NIK or Email" : msg("email")}
+                                {!realm.loginWithEmailAllowed ? "NIK" : !realm.registrationEmailAsUsername ? "NIK" : msg("email")}
                             </label>
                             <input
                                 tabIndex={2}
-                                placeholder="Username or Email"
+                                placeholder="NIK"
                                 name="username"
                                 id="username"
                                 type="text"

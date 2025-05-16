@@ -9,6 +9,7 @@ import type { I18n } from "./i18n";
 import type { KcContext } from "./KcContext";
 
 import logoMojokerto from "./assets/img/logo-mojokerto-2.png";
+
 export default function Template(props: TemplateProps<KcContext, I18n>) {
     const {
         displayInfo = false,
